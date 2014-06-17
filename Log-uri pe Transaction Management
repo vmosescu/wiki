@@ -1,0 +1,29 @@
+<b>Log-uri pe Transaction Management</b>
+18 iunie 2013
+
+Testare
+Nu scrie nimic in loguri (nici altceva, nu numai de tx).
+Primele loguri sunt scrise doar de info si sunt scrise cu rosu.
+In Java Build Path avea setat 
+JRE System Library [WebSphere Portal v6.0 JRE] si
+WebSphere Portal v6.0 JRE [WebSphere Portal v6.0 JRE]
+Am scos a doua dependinta
+In Run Configuration... aceasta aparea ultima.
+
+Run-time WebSphere Portal
+Nu stiu de ce nu se instantiaza cum trebuie log4j pt org.springframework
+Cred ca la fel ca mai sus e suprascris cumva de ceva din Portal.
+Ciudat ca de ex "java.sql" nu e suprascris si functioneaza (dar aici mai intervine si ibatis cred)
+Dar ne putem duce in WebSphere pe 
+Troubleshooting -> Logs and Trace -> WebSphere Portal -> Diagnostic Trace -> Change Log Detail Levels
+
+org.springframework.*=all
+
+sau se pune mai strict pe ce ne intereseaza, ex: 
+
+*=info: org.springframework.transaction.jta.WebSphereUowTransactionManager=all
+
+logurile se vor vedea in fisierul trace.log, nu in consola = SystemOut.log
+
+INFO
+Pt info despre tranzactie se pot folosi metodele statice din TransactionSynchronizationManager
