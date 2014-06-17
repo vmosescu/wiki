@@ -1,0 +1,10 @@
+23 octombrie 2013
+SVN
+
+In RAD, pt proiectul respectiv se configureaza excluderea **/.svn/** (Java Build Path -> Source), pt a nu incerca compilarea directoarelor svn (si a le pune in bin)
+Se creaza pe svn directorul respectiv (ac. cu numele proiectului; ex: ProjectDao).
+De pe calculator se face import pe svn (folosind meniul Tortoise din Windows Explorer) intr-un subdirector al directorului creat (ex. Src) – nu se creaza legatura intre fisierele de pe calculator si cele importate pe SVN, asa ca:
+De pe calculator pe face Checkout (folosind meniul Tortoise din Windows Explorer) pt fisierele importate anterior pe SVN pt a crea legaturile.
+
+
+Ar trebui sa se poata face exportul pe svn si legaturile intre fisiere intr-un singur pas, nu in 2 (import si checkout), dar nu stiu cum. Mai ales ca in pasul 2 (checkout cred ca se si suprascriu fisierele de calculator cu cele de pe svn – noroc ca doar ce le importasem, deci erau identice)
