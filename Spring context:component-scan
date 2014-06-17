@@ -1,0 +1,39 @@
+9 octombrie 2013
+Citire resurse dintr-un jar
+
+Citirea resurselor dintr-un jar se face cu 
+
+ClassLoader.getResourceAsStream(), nu cu ClassLoader.getResource(). 
+
+Si asa apar probleme daca acel fisier include alt fisier (ex: un fisier xsd care face referire la alt fisier xsd). 
+Atunci solutia este sa se scoata acele fisiere din jar si sa se puna in classpath (de ex. Intr-un share lib sau in WEB-INF/classes) de unde pot fi citite oricum. 
+
+9 octombrie 2013
+Spring context:component-scan
+
+context:component-scan nu functioneaza daca clasele sunt intr-un jar. 
+A trebuit sa declar in fisiere fiecare bean cu <bean /> pt ca ele sa fie incarcate in context (am pus si <context:annotation-config/> pt a functiona @Autowired)
+
+19 februarie 2014
+daca punem File nu-l poate gasi in jar - trebuie pus direct in FileSystem (in share lib)
+daca punem InputStream gaseste xsd-ul in jar, dar daca acesta importa alt xsd (common.xsd) pe acesta nu-l mai gaseste
+cu URL merge perfect deoarece ii transmite cum trebuie id-ul de resursa
+
+WildCard si ClassPathXmlApplicationContext
+
+Nu merge cand fisierele sunt intr-un jar: Trebuie scrise explicit, fara wildcard.
+
+16 iunie 2014
+Spring context:component-scan
+
+Daca avem o aplicatie web ce foloseste anumite jar-uri spring, pt a incarca fisierele de configurare spring din aceste jar-uri se foloseste in web xml 
+
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+        	/WEB-INF/spring/application-config.xml 
+        	classpath*:spring/sepaddi-service-wbi.xml
+        	</param-value>
+    </context-param>
+
+Daca in fisierele de configurare spring din acele jar-uri folosim context:component-scan atunci va trebui ca la crearea respectivelor jar-uri din eclipe (RAD, STS) sa bifam "Add directory entries" la export.
