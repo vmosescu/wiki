@@ -1,0 +1,53 @@
+Pt a putea testa 2 portleti care comunica (ART/ACUDT) trebuie sa avem un repository comun. 
+Avem urmatoarea situatie: 
+portletii ruleaza in aceeasi masina virtuala (portalul)
+portletii utilizeaza contexte spring diferite
+
+Aceasta se poate face utilizand un repository in memorie (POJO) folosind clase/metode statice sau o baza de date comuna.
+
+Ideea e sa nu folosim baza de date comuna care se foloseste pt dezvoltare de intreaga echipa, ci sa folosim o baza de date locale. 
+Pt a rula teste (junit) (si nu numai – si pt teste in interfata) ar trebui ca aceasta baza sa se poata initializa la fiecare rulare.
+Alta proprietate ar fi sa se poata defini independent de portal (deci nu cu jndi) pt a putea rula testele pt servicii cu portalul oprit (exista anumite mock-uri pt JNDI).
+
+In spring 2.5 nu avem jdbc-embedded, deci nu putem folosi aceast feature. (Exista o posibilitate ca cele 2 contexte de portleti sa aiba un context parinte comun in care este definita dataSource). 
+
+
+Am reusit sa dau drumul la un server hsqldb si sa ma conectez la el.
+Problema e ca in proiectul DAO aveam erori la runtime – nu gasea clasele spring-jdbc ...
+Am adaugat jar-urile in proiectul EAR (Import-->J2EE Utility Jar-->Copy Utility Jars..), iar apoi in proiectul DAO am facut sa depinda de aceste jar-uri din EAR.
+
+Acum sa facem sa existe un singur context parinte. 
+
+http://blog.springsource.org/2007/06/11/using-a-shared-parent-application-context-in-a-multi-war-spring-application/
+
+In proiectul ce contine dao se adauga in root classpath fisierul "beanRefContext.xml" – trebuie sa fie si un parametru de configurare, dar nu l-am mai cautat.
+
+<bean id="ear.context"
+		class="org.springframework.context.support.ClassPathXmlApplicationContext">
+	<constructor-arg>
+		<list>
+			<value>spring-data.xml</value>
+		</list>
+	</constructor-arg>
+</bean>
+
+In spring-data.xml sunt definite beanurile comune.
+
+<bean id="ratmcycleedit.dao.db" class="ro.rzb.ratm.dao.Dao">
+	<property name="dataSource" ref="dataSource" />
+</bean>
+
+<bean id="dataSource"		class="org.springframework.jdbc.datasource.DriverManagerDataSource">		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+	<property name="url" value="jdbc:hsqldb:hsql://localhost/test" />
+	<property name="username" value="sa" />
+	<property name="password" value="" />
+</bean>
+
+In web.xml de la fiecare portlet (in cazul nostru ART si ACUDT) punem 
+<context-param>
+	<param-name>parentContextKey</param-name>
+	<param-value>ear.context</param-value>
+</context-param>
+
+http://tillias.wordpress.com/2012/11/10/unit-testing-and-integration-testing-using-junit-liquibase-hsqldb-hibernate-maven-and-spring-framework/
+
