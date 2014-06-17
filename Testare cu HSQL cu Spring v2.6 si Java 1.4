@@ -1,0 +1,31 @@
+Testare cu HSQL cu Spring v2.6 si Java 1.4
+6 martie 2013
+
+In Spring 3.0 exista jdbc:embedded-database care poate fi folosita cu succes in testare, dar in 2.x nu exista asa ceva. 
+
+Ideea este de aici 
+http://stuff4j.blogspot.ro/2013/01/in-memory-database-with-spring-25-and.html 
+dar nu am putut face download la sursele spring (securitate, firewall, mcafee, etc...)
+
+Am creat o clasa utilitara care transforma o schema Oracle intr-o schema ce poate fi importata in Hsql. 
+Se creaza o clasa utilitara ce creaza un fisier cu inserturile de initializare. 
+Am creat o clasa ce extinde DriverManagerDataSource, dar care poate primi fisiere sql care pot fi rulate la initializarea bazei de date.
+
+
+
+Apoi se poate folosi un hsqldb care ruleaza in-memory. Astfel va arata o configurare de dataSource:
+
+<bean id="dataSource"
+	class="ro.rzb.common.ratm.dao.util.CustomDriverManagerDataSource"  
+		init-method="init">
+	<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
+	<property name="url"	value="jdbc:hsqldb:mem:ratm" />
+	<property name="username" value="sa" />
+	<property name="password" value="" />
+	<property name="script">
+		<list>
+			<value>test/config/test/ratm-schema-hsql.sql</value>
+			<value>test/config/test/ratm-data.sql</value>
+		</list>
+	</property>
+</bean>
