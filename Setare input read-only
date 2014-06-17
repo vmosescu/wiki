@@ -1,0 +1,20 @@
+Setare input read-only
+16 mai 2013
+
+Avem anumite input-uri care se folosesc doar pt afisare. Ele nu trebuie completate de utilizator. In principiu ele se completeaza automat prin Ajax. In cazul in care apar erori de validare pe server pagina trebuie sa se reincarce cu acele valori setate.
+
+Avem 2 solutii:
+
+1. Punem disabled pe input si pe submit facem removeAttr("disabled")
+(daca lasam disabled pe input atunci valoarea lui nu se transmite)
+Dezavantaj:
+In IE apare sters campul disabled.
+Avantaj:
+Cu tab se sare peste campurile disabled
+
+2. Punem readonly pe input
+Dezavantaj:
+Utilizatorul nu-si da seama ca e read-only (se poate seta background cu alta culoare)
+Cu tab se intra in el.
+Avantaj
+Se vede bine si in IE.
