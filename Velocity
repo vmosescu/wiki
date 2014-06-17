@@ -1,0 +1,25 @@
+9 octombrie
+Velocity
+
+Velocity este bun deoarece se pot dezvolta plugin-uri la aplicatiile web (portal) in care paginile sa fie incluse in jar-ul ce este pus pe server (intr-un share lib), fara a se face update la aplicatie.
+
+Integrare Velocity cu JSP
+
+Aceasta integrare este exemplificata in ART / ACUDT. Paginile JSP se afla in war care apoi includ dinamic paginile velocity din jar (folosind clase java care citesc paginile velocity si le trimit ca parametru de tip String)
+
+O alta varianta ar fi folosirea Velocity View Tool, VelocityViewTag. 
+Problema este ca acesta apare din versiunea 2.0 care foloseste Java 1.5, deci nu poate fi folosit pe WebSphere Portal 6.0. 
+
+O alta varianta ar fi folosirea velocity fara JSP. 
+Nu am gasit variabilele renderRequest si renderResponse setate default in pagina pt crearea link-urilor.
+??? Daca gaseste in classpath un pachet incarca vm de acolo, fara a mai cauta in classpath alt pachet la fel.
+Nu am reusit sa pun in web.xml parametrul contextConfigLocation in care sa pun fisierele de configurare in ant style si acestea sa se gaseasca in interiorul jar-ului de plugin ce se pune in share lib:
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			/WEB-INF/context/applicationContext.xml, 
+			classpath*:spring/*-context.xml
+		</param-value>
+	</context-param>
+A trebuit ca in share lib sa creez directorul spring in care sa pun toate fisierele de configurare.
+Exista o incompatibilitate intre classpath* si ant style.
