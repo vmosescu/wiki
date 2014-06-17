@@ -1,0 +1,21 @@
+Calendar jQuery
+2 octombrie 2013
+
+O solutie simpla pt calendar este sa folosim pe server proprietati de tip String si apoi prin validare custom sa transformam String in Date.
+
+Daca folosim in jQuery formatul 'dd.mm.y' (y inseamna de fapt 2 cifre) atunci e bine sa se foloseasca si shortYearCutoff pt a spune clar la ce secol se refera cele 2 cifre.
+
+Daca se foloseste o perioada, atunci pe onClose-ul unuia din calendare sa se testeze daca utilizatorul a ales o data (data este null) inainte de a seta intervalul de selectie acceptat pt celalalt calendar:
+onClose: function( selectedDate ) {
+	var sdate = $("#${namespace}minStartDate").datepicker('getDate');
+	//nu a selectat nimic
+	if(sdate==null)
+		return;
+	var days = sdate.getDate() ;
+	sdate.setDate(days+365);
+        	$("#${namespace}maxStartDate").datepicker( "option", {"minDate": selectedDate, "maxDate": sdate
+	}
+
+Pe server e bine sa se seteze simpleDateFormat.setLenient(false) pt a nu transforma eronat o data. 
+
+O alta solutie este sa folosim pe server proprietati de tip Date, dar trebuie sa definim formatul de data primit si sa traducem mesajele de eroare care apar la validare. TO DO...
