@@ -1,3 +1,6 @@
+Testare Portleti – baza de date comuna
+5 martie 2013
+
 Pt a putea testa 2 portleti care comunica (ART/ACUDT) trebuie sa avem un repository comun. 
 Avem urmatoarea situatie: 
 portletii ruleaza in aceeasi masina virtuala (portalul)
