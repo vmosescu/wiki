@@ -1,5 +1,5 @@
-###war: test classes
-####22.07.2014
+### war: test classes
+#### 22.07.2014
 
 Pentru a scrie clase de test in proiecte war si a nu fi exportate in war: 
 
