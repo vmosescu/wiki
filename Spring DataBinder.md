@@ -1,5 +1,5 @@
-Spring DataBinder
-20 iunie 2013
+### Spring DataBinder
+#### 20 iunie 2013
 
 - In DataBinder se pot inregistra PropertyEditors. (in spring 3 se pot folosi si Converter)
 Ei se inregistreaza de obicei pe metoda initBinder. Acestia se creaza in acel moment, nu se inregistreaza in containerul spring. Asta pt ca ei trebuie nu trebuie sa fie singleton: nu sunt thread safety (ex. SimpleDateFormat).
