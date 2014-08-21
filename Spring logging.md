@@ -10,3 +10,5 @@ Concluzii:
   - slf4j
   - binding (ex. slf4j-log4j12)
   - implementarea (ex. log4j)
+
+- pe WAS exista deja anumite librarii (commons-logging)
