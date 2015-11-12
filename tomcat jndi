@@ -15,13 +15,13 @@ server.xml
               pathname="conf/tomcat-users.xml" />
 
     <Resource name="jdbc/LoyaltyDS" auth="Container" 
-		username="db2admin" password="yukon" 
+		username="******" password="*******" 
 		driverClassName="com.ibm.db2.jcc.DB2Driver" 		 
 		type="javax.sql.DataSource" 
 		url="jdbc:db2://localhost:50000/loyalty" />
 
     <Resource name="jdbc/DetelinaDS" auth="Container" 
-		username="db2admin" password="yukon" 
+		username="*******" password="******" 
 		driverClassName="com.ibm.db2.jcc.DB2Driver" 		 
 		type="javax.sql.DataSource" 
 		url="jdbc:db2://localhost:50000/detelina" />
