@@ -22,4 +22,14 @@ $ git branch <name> (new branch from current branch)
 $ git checkout <name>
 $ git merge <name> (name -> current branch)
 $ git branch -d <name> (delete)
+
+$ git remote add origin <url>
+$ git remote -v
+$ git push -u origin master (only first time)
+$ git push
+
+$ git clone <url>
+git add, commit, push
+
+$ git pull -> could be conflicts
 ```  
