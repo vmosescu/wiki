@@ -32,4 +32,9 @@ $ git clone <url>
 git add, commit, push
 
 $ git pull -> could be conflicts
+
+$ git branch
+$ git log hotfix/EPS-3258-fix-xml-factory-3.0.0
+$ git cherry-pick -n a331031e5c361bd73cf3662b15941740dda046e9
+
 ```  
