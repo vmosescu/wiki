@@ -12,7 +12,9 @@ $ git restore <path> (from staging)
 $ git ls-files
 $ git log
 
-
+$ git clone
+$ git fetch
+$ git ckeckout <remote>
 
 $ git fetch
 $ git pull
