@@ -16,6 +16,8 @@ $ git clone
 $ git fetch
 $ git ckeckout <remote>
 
+$ git checkout develop <path> (from develop in current branch)
+
 $ git fetch
 $ git pull
 
