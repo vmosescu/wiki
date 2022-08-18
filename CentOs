@@ -4,8 +4,22 @@ Installing Centos on VirtualBox
 - VirtualBox: add Host-only Adapter
 - verify NAT network: ping google.com
 - if NOT: 
-	- ip adress show
+	- ip address show
 	- verify enp0s3 ip addres
 	- ifup enp0s3 - verify again
 	- persist changes: /etc/sysconfig/network-scripts/ifcfg-enp0s3: ONBOOT=yes
 - https://docs.docker.com/engine/install/centos/ Install using the repository 
+
+- proxy
+export http_proxy=http://my.proxy:8080
+export https_proxy=https://my.proxy:8443
+no_proxy=192.168.1.*,localhost,example.org
+
+or in different specific files
+/etc/systemd/system/docker.service.d/http-proxy.conf:Environment="HTTP_PROXY=http://user:password\!@proxy.organisation.com:8080"
+/etc/systemd/system/docker.service.d/http-proxy.conf:Environment="HTTPS_PROXY=http://user:password\!@proxy.organisation.com:8080"
+/etc/default/docker:HTTP_PROXY='http://user:password\!@proxy.organisation.com:8080'
+/etc/default/docker:HTTPS_PROXY='http://user:password\!@proxy.organisation.com:8080'
+/etc/yum.conf:proxy=http://user:password\!@proxy.organisation.com:8080
+/etc/system/default/docker:http_proxy='http://user:password\!@proxy.organisation.com:8080'
+
