@@ -13,8 +13,20 @@
 # docker exec <docker_ip/name> <command> -> executes a command
 
 # docker ps -a
+# docker images
 
 # docker inspect --format "{{.State.Running}}" wp
 
 # docker rm web
+# docker rmi web
+
+# docker search postgres
+
+# docker pull busybox:latest
+# docker save -o myfile.tar busybox:latest
+# docker load –i myfile.tar
+
+# docker build -t dia_ch3/dockerfile:latest ch3_dockerfile
+
+
 ```
