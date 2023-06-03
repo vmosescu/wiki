@@ -43,4 +43,11 @@ $ docker run -d -P --name ch6_wordpress \
 wordpress:4.1
 
 $ docker -it --rm --device /dev/video0:/dev/video0 ubuntu:latest ls -al /dev
+
+$ docker run --name hw_container ubuntu:latest touch /HelloWorld
+$ docker commit hw_container hw_image
+$ docker rm -vf hw_container
+$ docker run --rm hw_image ls -l /HelloWorld
+$ docker diff <container>
+$ docker history <image>
 ```
