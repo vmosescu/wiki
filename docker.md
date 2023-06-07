@@ -50,4 +50,9 @@ $ docker rm -vf hw_container
 $ docker run --rm hw_image ls -l /HelloWorld
 $ docker diff <container>
 $ docker history <image>
+
+$  docker export --output contents.tar <container>
+$ dicker import ...
+
+$ docker build --tag ubuntu-git:auto . => in current folder exists Dockerfile
 ```
