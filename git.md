@@ -42,3 +42,11 @@ $ git log hotfix/EPS-3258-fix-xml-factory-3.0.0
 $ git cherry-pick -n a331031e5c361bd73cf3662b15941740dda046e9
 
 ```  
+
+## access a web server running in a container and docker is installed into a vm
+ - container port 8080 is published on port 80 in docker vm
+```
+$ docker run -p 8080:80
+```
+- port forward 80 to 80 (host to vm)
+- access http://localhost:80 on host
