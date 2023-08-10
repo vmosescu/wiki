@@ -99,6 +99,7 @@ expected case: fiecare se introduce la mijlocul listei: rezulta tot O(N*N)
 ## SelectionSort
 - invers decat la insertions
 - gaseste itemul ce trebuie inserat la acea pozitie (ex. min la poz 1, etc.)
+- gaseste minimul in itemii ramasi si se insereaza la sfarsitul itemilor deja sortati
 - for p=1 to N: find the smallest remaining item and insert the item in position p
 - 2 LinkedLists: O(N*N)
 - 2 arrays or single array
