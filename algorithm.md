@@ -83,10 +83,11 @@ expected case: fiecare se introduce la mijlocul listei: rezulta tot O(N*N)
 
 ## InsertionSort
 - find the position  and insert
+- se ia urmatorul item din lista si este comparat cu precedentii (sortati deja) pana cand i se gaseste locul
 - SortedLinkedList
- - worst case (already sorted): 
+ - worst case (in reverse order): 
 	1+2+3+...+N = N*(N-1)/2 = 1/2(N*N - N) = O(N*N)
- - bast case (in reverse order)
+ - bast case (already sorted)
 	1+1+.....+1 = N = O(N)
  - random (il inserampe la jumatate)
 	1/2 1 + 1/2 2 + 1/2 3 + .......+ 1/2 N = 1/2(1+2+...+N) = 1/4(N*N - N) = O(N*N)
